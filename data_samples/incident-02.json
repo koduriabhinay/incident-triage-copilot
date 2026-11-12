@@ -1,0 +1,10 @@
+{
+  "id": "incident-02",
+  "title": "Postgres primary failover on orders-db cluster",
+  "description": "PostgresFailoverInitiated alert fired at 03:12 UTC for the orders-db cluster. Applications are logging connection refused errors and write latency spiked. The old primary appears to have suffered a kernel panic. Reads are still being served by replicas.",
+  "severity": "SEV1",
+  "category": "data",
+  "relevant_runbooks": [
+    "database-failover"
+  ]
+}

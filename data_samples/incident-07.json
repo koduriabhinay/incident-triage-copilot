@@ -1,0 +1,10 @@
+{
+  "id": "incident-07",
+  "title": "Node disk pressure on worker pool us-east-1b",
+  "description": "Three nodes in the us-east-1b worker pool are reporting DiskPressure with usage at 89%. Several low-priority batch pods were evicted. A logging sidecar appears to be writing unbounded output.",
+  "severity": "SEV3",
+  "category": "infra",
+  "relevant_runbooks": [
+    "node-disk-pressure"
+  ]
+}

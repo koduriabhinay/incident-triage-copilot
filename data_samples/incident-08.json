@@ -1,0 +1,10 @@
+{
+  "id": "incident-08",
+  "title": "Intermittent elevated latency on search endpoint",
+  "description": "The search endpoint shows intermittent P99 latency spikes to 900ms (baseline 150ms) roughly every 10 minutes. Error rate is unchanged. Pattern started after the nightly index rebuild job was rescheduled.",
+  "severity": "SEV3",
+  "category": "app",
+  "relevant_runbooks": [
+    "api-high-error-rate"
+  ]
+}

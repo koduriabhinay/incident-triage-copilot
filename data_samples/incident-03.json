@@ -1,0 +1,10 @@
+{
+  "id": "incident-03",
+  "title": "Elevated 5xx error rate on user profile API",
+  "description": "The user profile API is showing a 4% 5xx error rate sustained over the last 20 minutes, up from a baseline of 0.05%. P99 latency has climbed from 200ms to 1.8s. Errors correlate with calls to the downstream recommendations service.",
+  "severity": "SEV2",
+  "category": "app",
+  "relevant_runbooks": [
+    "api-high-error-rate"
+  ]
+}

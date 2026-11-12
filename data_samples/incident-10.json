@@ -1,0 +1,8 @@
+{
+  "id": "incident-10",
+  "title": "Typo in admin dashboard footer text",
+  "description": "The admin dashboard footer reads 'Copright 2026' instead of 'Copyright 2026'. Cosmetic only, no functional impact. Low priority fix for the next regular release.",
+  "severity": "SEV4",
+  "category": "app",
+  "relevant_runbooks": []
+}

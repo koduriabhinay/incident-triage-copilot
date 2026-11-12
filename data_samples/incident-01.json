@@ -1,0 +1,11 @@
+{
+  "id": "incident-01",
+  "title": "Complete outage: checkout API returning 503 for all users",
+  "description": "Since 14:02 UTC the checkout API is returning 503 for 100% of requests. All users are affected and no orders can be placed. The last deploy to checkout-api went out at 13:55 UTC. Payment processing is completely down.",
+  "severity": "SEV1",
+  "category": "app",
+  "relevant_runbooks": [
+    "api-high-error-rate",
+    "pod-crashloop"
+  ]
+}

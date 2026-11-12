@@ -1,0 +1,11 @@
+{
+  "id": "incident-04",
+  "title": "Kafka consumer lag growing on order-processor group",
+  "description": "Consumer lag on the order-processor group has grown past 250k messages and is still climbing. Order confirmation emails are delayed by up to 40 minutes. Two consumer pods restarted 12 times in the last hour, possibly hitting a poison-pill message.",
+  "severity": "SEV2",
+  "category": "data",
+  "relevant_runbooks": [
+    "kafka-consumer-lag",
+    "pod-crashloop"
+  ]
+}

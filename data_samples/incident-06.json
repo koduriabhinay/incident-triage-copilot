@@ -1,0 +1,10 @@
+{
+  "id": "incident-06",
+  "title": "Suspicious login spike from single IP range",
+  "description": "Auth service reports 2,000 failed login attempts in 10 minutes from a single IP range, with a small number of successes. Pattern matches credential stuffing. No evidence of data exfiltration so far.",
+  "severity": "SEV2",
+  "category": "security",
+  "relevant_runbooks": [
+    "api-high-error-rate"
+  ]
+}

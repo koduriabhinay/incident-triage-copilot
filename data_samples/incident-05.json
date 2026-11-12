@@ -1,0 +1,10 @@
+{
+  "id": "incident-05",
+  "title": "Payments deployment pods in CrashLoopBackOff",
+  "description": "After the 11:30 UTC deploy, 6 of 10 payments-service pods are in CrashLoopBackOff. Logs show a missing environment variable PAYMENTS_GATEWAY_URL. The remaining pods are handling traffic but latency is elevated.",
+  "severity": "SEV2",
+  "category": "infra",
+  "relevant_runbooks": [
+    "pod-crashloop"
+  ]
+}

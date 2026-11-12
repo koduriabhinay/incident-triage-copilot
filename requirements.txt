@@ -1,0 +1,8 @@
+# Pinned runtime and test dependencies.
+# Python 3.10+ required. Everything runs offline; no API keys needed.
+fastapi==0.141.1
+uvicorn==0.53.0
+pydantic==2.13.5
+numpy==2.5.3
+rank-bm25==0.2.2
+pytest==9.1.1

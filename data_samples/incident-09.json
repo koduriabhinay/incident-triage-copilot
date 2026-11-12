@@ -1,0 +1,8 @@
+{
+  "id": "incident-09",
+  "title": "TLS certificate for api.example.com expires in 7 days",
+  "description": "Monitoring reports the TLS certificate for api.example.com expires in 7 days and auto-renewal did not trigger. No user impact yet. Renewal runbook needs to be executed before expiry to avoid an outage.",
+  "severity": "SEV3",
+  "category": "infra",
+  "relevant_runbooks": []
+}

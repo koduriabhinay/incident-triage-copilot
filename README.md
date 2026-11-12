@@ -1,11 +1,10 @@
 # Incident Triage Copilot
 
-A multi-agent incident triage system for on-call engineering. Paste in an
-incident report and four cooperating agents classify it, retrieve the relevant
-runbook sections, draft a remediation plan, and produce a structured,
-timeline-ready summary. Everything runs **offline** with zero API keys; an
-optional LLM layer can refine classification and plans when a key is present,
-and the system degrades gracefully when it is not.
+A multi-agent incident triage tool for on-call engineers. Given an incident
+report, four agents classify it, retrieve the relevant runbook sections, draft a
+remediation plan and write a structured summary. It runs offline with no API
+keys. An optional LLM step can refine the classification and plan when a key is
+configured; without one, the rule-based and extractive paths are used.
 
 ## Architecture
 
@@ -57,10 +56,11 @@ retrieved sections and cites every item back to its runbook section. The
 reporter composes the final summary purely from pipeline outputs, so it never
 invents facts.
 
-## 60-second quickstart
+## Quickstart
 
 ```bash
-git clone <this-repo> && cd incident-triage-copilot
+git clone https://github.com/koduriabhinay/incident-triage-copilot.git
+cd incident-triage-copilot
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
@@ -79,7 +79,7 @@ curl -X POST localhost:8000/triage \
 
 ## Sample triage output
 
-`python cli.py --file data_samples/incident-04.json` (real output, trimmed):
+`python cli.py --file data_samples/incident-04.json` (trimmed):
 
 ```
 Severity   : SEV2  (confidence 0.81)
@@ -136,7 +136,7 @@ latency. Results on the bundled samples:
 
 Retrieval precision is measured against labeled relevant runbooks on the 8
 samples that have one (two samples intentionally have no matching runbook).
-Run the test suite with `pytest tests/` (26 tests, all offline).
+Run the test suite with `pytest tests/` (runs offline).
 
 ## Configuration
 
@@ -147,7 +147,7 @@ Run the test suite with `pytest tests/` (26 tests, all offline).
 | `TRIAGE_LLM_MODEL` | `gpt-4o-mini` | Model used when the LLM path is active |
 | `TRIAGE_TOP_K` | `5` | Runbook sections retrieved per triage (API default) |
 
-The LLM path is strictly optional: classification falls back to the
+The LLM path is optional: classification falls back to the
 rule-based classifier and planning falls back to the extractive plan whenever
 the key or client library is missing.
 
@@ -164,7 +164,7 @@ tests/           pytest suite for classifier, retrieval, orchestrator, eval
 cli.py           terminal triage from a file, --text, or stdin
 ```
 
-## Optional upgrade: dense embeddings
+## Adding dense embeddings
 
 The retrieval agent currently fuses BM25 with hashed TF-IDF vectors, which
 keeps the project dependency-light and fully offline with no model downloads.
@@ -172,8 +172,8 @@ If you want true semantic retrieval, `sentence-transformers`
 (`all-MiniLM-L6-v2`) can be swapped in as a third ranking signal: encode the
 runbook sections once at index time, encode the query at retrieval time, and
 add the cosine-similarity ranking to the reciprocal rank fusion list in
-`RetrievalAgent.retrieve`. The fusion interface already accepts any number of
-rankings, so this is a small, contained change. The BM25 + TF-IDF path stays
+`RetrievalAgent.retrieve`. The fusion function already accepts any number of
+rankings. The BM25 + TF-IDF path stays
 as the offline fallback.
 
 ## Limitations
@@ -186,8 +186,8 @@ as the offline fallback.
 * The action agent is extractive: it can only recommend what the runbooks
   already say. Novel failure modes get generic escalation guidance.
 * Sample eval numbers above are measured on 10 hand-written incidents, so
-  treat them as a smoke signal, not a benchmark.
+  treat them as a smoke test, not a benchmark.
 
 ## License
 
-MIT. See `LICENSE`.
+MIT, see [LICENSE](LICENSE).
